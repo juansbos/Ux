@@ -1,0 +1,71 @@
+/* Ventas.css */
+.ventas {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ventas-content {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .ventas-sidebar {
+    margin-left: 20px;
+    width: 200px;
+  }
+  
+  .payment-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  /* ProductList.css */
+  .product-list {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .product-list th,
+  .product-list td {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .product-list th {
+    background-color: #E8E8E8;
+  }
+  
+  .product-list tr:nth-child(even) {
+    background-color: #F9F9F9;
+  }
+  
+  /* SearchBar.css */
+  .search-bar {
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+  }
+  
+  /* TotalDisplay.css */
+  .total-display {
+    background-color: #E0FFD4;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .total-amount {
+    font-size: 24px;
+    font-weight: bold;
+  }

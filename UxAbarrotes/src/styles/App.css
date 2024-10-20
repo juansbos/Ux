@@ -1,0 +1,239 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #e0e0e0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar .logo img {
+  height: 40px;
+}
+
+.navbar h1 {
+  margin: 0;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: var(--text-color);
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: var(--text-color);
+  transition: transform 0.3s;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+.menu-toggle.open .hamburger {
+  background-color: transparent;
+}
+
+.menu-toggle.open .hamburger::before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .hamburger::after {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Side Menu Styles */
+.side-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.side-menu-overlay.open {
+  display: block;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: var(--background-color);
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu a {
+  display: block;
+  padding: 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.side-menu a:hover,
+.side-menu a.active {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+/* Ventas Page Styles */
+.ventas-page {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.left-panel {
+  flex: 2;
+  padding: 1rem;
+  border-right: 1px solid var(--border-color);
+}
+
+.center-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  border-left: 1px solid var(--border-color);
+}
+
+.message {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.total-section {
+  margin-top: auto;
+}
+
+.payment-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.payment-button:hover {
+  background-color: #2980b9;
+}
+
+/* ProductList Styles */
+.product-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-list th,
+.product-list td {
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  text-align: left;
+}
+
+.product-list th {
+  background-color: #E8E8E8;
+}
+
+.product-list tr:nth-child(even) {
+  background-color: #F9F9F9;
+}
+
+/* TotalDisplay Styles */
+.total-display {
+  background-color: #E0FFD4;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.total-amount {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ventas-page {
+    flex-direction: column;
+  }
+
+  .left-panel, .center-panel, .right-panel {
+    width: 100%;
+    border: none;
+  }
+}
