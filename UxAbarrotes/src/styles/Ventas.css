@@ -1,71 +1,72 @@
 /* Ventas.css */
-.ventas {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .ventas-content {
-    display: flex;
-    margin-top: 20px;
-  }
-  
-  .ventas-sidebar {
-    margin-left: 20px;
-    width: 200px;
-  }
-  
-  .payment-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  /* ProductList.css */
-  .product-list {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .product-list th,
-  .product-list td {
-    border: 1px solid var(--border-color);
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .product-list th {
-    background-color: #E8E8E8;
-  }
-  
-  .product-list tr:nth-child(even) {
-    background-color: #F9F9F9;
-  }
-  
-  /* SearchBar.css */
-  .search-bar {
-    margin-bottom: 20px;
-  }
-  
-  .search-bar input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-  }
-  
-  /* TotalDisplay.css */
-  .total-display {
-    background-color: #E0FFD4;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .total-amount {
-    font-size: 24px;
-    font-weight: bold;
-  }
+
+.ventas-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.productos-table {
+  width: 65%; /* Tabla a la izquierda */
+  max-height: 400px; /* Limitar la altura de la tabla */
+  overflow-y: auto; /* Permitir scroll vertical si hay muchos productos */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.pago-section {
+  width: 30%; /* Sección de pago a la derecha */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pago-boton {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.pago-boton:disabled {
+  background-color: #ccc; /* El botón de pago se desactiva si no hay total */
+  cursor: not-allowed;
+}
+
+.pago-boton:hover {
+  background-color: #0056b3;
+}
+
+/* Botones de cantidad */
+button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #ddd;
+}

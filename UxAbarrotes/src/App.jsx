@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar toggleSideMenu={toggleSideMenu} />
+        <Navbar toggleSideMenu={toggleSideMenu} isSideMenuOpen={isSideMenuOpen} />
         <div className="content-wrapper">
           <SideMenu isOpen={isSideMenuOpen} />
           <main className="main-content">

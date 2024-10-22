@@ -1,34 +1,70 @@
 import React, { useState } from 'react';
-import ProductList from '../components/ProductList';
-import SearchBar from '../components/SearchBar';
-import TotalDisplay from '../components/TotalDisplay';
+import productos from './Productos';
 import '../styles/Ventas.css';
 
 function Ventas() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [total, setTotal] = useState(0);
+  // Crear un estado para almacenar la cantidad de cada producto, inicialmente en 0
+  const [cantidades, setCantidades] = useState(() => {
+    return productos.reduce((acc, producto) => {
+      acc[producto.id] = 0; // Inicialmente, cada producto tiene cantidad 0
+      return acc;
+    }, {});
+  });
 
-  const handleSearch = (term) => {
-    setSearchTerm(term);
+  // Función para incrementar la cantidad de un producto
+  const incrementarCantidad = (id) => {
+    setCantidades((prevCantidades) => ({
+      ...prevCantidades,
+      [id]: prevCantidades[id] + 1
+    }));
   };
 
-  const handleTotalChange = (newTotal) => {
-    setTotal(newTotal);
+  // Función para disminuir la cantidad de un producto
+  const disminuirCantidad = (id) => {
+    setCantidades((prevCantidades) => ({
+      ...prevCantidades,
+      [id]: Math.max(0, prevCantidades[id] - 1) // No permite disminuir por debajo de 0
+    }));
+  };
+
+  // Calcular el total basado en las cantidades actuales
+  const calcularTotal = () => {
+    return productos.reduce((acc, producto) => {
+      return acc + producto.precio * cantidades[producto.id];
+    }, 0);
   };
 
   return (
     <div className="ventas-container">
-      <div className="sidebar">
-        <img src="logo.png" alt="TODO-MART Logo" className="logo" />
-        <ProductList searchTerm={searchTerm} onTotalChange={handleTotalChange} />
-        <TotalDisplay total={total} />
+      <div className="productos-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Cantidad</th>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Añadir/Quitar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {productos.map((producto) => (
+              <tr key={producto.id}>
+                <td>{cantidades[producto.id]}</td>
+                <td>{producto.nombre}</td>
+                <td>${(producto.precio * cantidades[producto.id]).toFixed(2)}</td>
+                <td>
+                  <button onClick={() => disminuirCantidad(producto.id)} disabled={cantidades[producto.id] === 0}>-</button>
+                  <button onClick={() => incrementarCantidad(producto.id)}>+</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      <div className="main-content">
-        <SearchBar onSearch={handleSearch} />
-        <div className="scanner-area">
-          <p>ESCANEA UN PRODUCTO O BÚSCALO EN LA BARRA DE BÚSQUEDA</p>
-        </div>
-        <button className="payment-button">Ir al pago</button>
+
+      <div className="pago-section">
+        <h3>Total: ${calcularTotal().toFixed(2)}</h3>
+        <button className="pago-boton" disabled={calcularTotal() === 0}>Ir al pago</button>
       </div>
     </div>
   );
