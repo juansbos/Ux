@@ -1,0 +1,131 @@
+/* Inventario.css */
+.inventario-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 64px);
+}
+  
+.inventario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+  
+.inventario-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1;
+}
+  
+.inventario-table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+}
+  
+.inventario-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+  
+.inventario-table th {
+    background: #f8f9fa;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #4a5568;
+    border-bottom: 2px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+  
+.inventario-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+  
+.stock-cell {
+    font-weight: 600;
+    text-align: center;
+}
+  
+.stock-cell.low {
+    color: #e53e3e;
+}
+  
+.stock-cell.warning {
+    color: #dd6b20;
+}
+  
+.precio-cell {
+    text-align: right;
+    font-family: monospace;
+    font-size: 1.1em;
+}
+  
+.actions-cell {
+    width: 120px;
+    text-align: center;
+}
+  
+.action-button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #4a5568;
+    transition: all 0.2s;
+}
+  
+.action-button:hover:not(:disabled) {
+    transform: scale(1.1);
+}
+  
+.action-button.decrease:hover:not(:disabled) {
+    color: #e53e3e;
+}
+  
+.action-button.increase:hover:not(:disabled) {
+    color: #38a169;
+}
+  
+.action-button:disabled {
+    color: #cbd5e0;
+    cursor: not-allowed;
+}
+  
+.search-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+  
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+}
+  
+@media (max-width: 768px) {
+    .inventario-page {
+        padding: 1rem;
+    }
+    
+    .inventario-table th,
+    .inventario-table td {
+        padding: 0.75rem;
+    }
+    
+    .action-button {
+        padding: 0.25rem;
+    }
+}
